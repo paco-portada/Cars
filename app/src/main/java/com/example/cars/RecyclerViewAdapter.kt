@@ -1,5 +1,6 @@
 package com.example.cars
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cars.RecyclerViewAdapter.MyViewHolder
 
 class RecyclerViewAdapter(
-    private val list: List<DataModel>,
+    private val list: ArrayList<DataModel>,
     private val clickListener: ItemClickListener
 ) : RecyclerView.Adapter<MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -39,5 +40,10 @@ class RecyclerViewAdapter(
 
     interface ItemClickListener {
         fun onItemClick(dataModel: DataModel)
+    }
+
+    fun remove(position: Int) {
+        list.removeAt(position)
+        notifyDataSetChanged()
     }
 }

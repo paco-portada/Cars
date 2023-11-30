@@ -69,8 +69,9 @@ class MainFragment : Fragment(), ItemClickListener {
         builder.setMessage("Are you sure to delete the item?")
         builder.setPositiveButton("Confirm") {dialog, which ->
             val position = viewHolder.adapterPosition
-            list.removeAt(position)
-            adapter.notifyItemRemoved(position)
+            adapter.remove(position)
+            //list.removeAt(position)
+            //adapter.notifyItemRemoved(position)
         }
         builder.setNegativeButton("Cancel") {dialog, which ->
             val position = viewHolder.adapterPosition
